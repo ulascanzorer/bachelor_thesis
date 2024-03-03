@@ -1,0 +1,167 @@
+1. hafta:
+
+1) Baska metadata apilarina bak (bir tanesine mail attim ama daha geri donus yok)
+
+2) Neden 200 milyon release aldigimi ama internet scholarin 25 milyon release gosterebildiginin, fatcat ile aralarindaki iliskiyi anla (geri verdigi her hit ayri bir dokuman degil. Her sey ile matchlessin dedigimiz icin teorik olarak her textin her sayfasini ayri bir hit olarak verebiliyor ama sanirim kendi ayarlarindan dolayi text basina birden fazla, ama butun sayfalari vermeyecek sekilde donus yapiyor. Bu da dogal olarak sahip oldugu text sayisindan cok daha fazla bir sonuc ortaya cikariyor.) DONE
+
+3) Database kullanarak bunlari kaydetmeyi ogren (yaptim, daha robust hale getirecegim ama su an inanilmaz hizli) DONE
+
+4) Releaseleri belki hash haline getir (release_id koyarak benzer bir sey yaptim) DONE
+
+########################################################################################
+
+2. hafta: fix gender api
+
+1) fix gender api   DONE
+
+2) document different apis and their usage DONE
+
+3) find keyword DONE (for now)
+
+########################################################################################
+
+3. hafta:
+
+1) Bulunan authorlarin releaselerini ayrica bul DONE
+
+2) Bulunan releaseler hakkinda tag bulabiliyor musun ona bak (bulamiyorum) DONE
+
+3) Keyword to concept seyini gelistir (biraz gelistirdim)
+
+4) Django ve celery ogren (django tutorialini tamamladim ama daha ugrasmak gerek)
+
+5) Software patternlarini ogren (biraz baktim, daha cok bakmak gerek, django otomatik model view controller benzeri bir pattern kullaniyor, onun uzerinden gitmek zekice olabilir)
+
+6) Kodu biraz genellestir, temizle (baya genel oldu ama daha da guzellesebilir)
+
+########################################################################################
+
+4. week:
+
+1) Filter authors for a minimum ratio of releases containing concept DONE (kinda)
+
+2) If there are multiple authors, put a flag into the entry DONE (I hope)
+
+3) and for entries with this flag, add some orcid ids of people related to the concept by filtering them by their orcid entry   DONE (too slow, use the orcid file locally)
+
+4) Think about the author orders too    DONE
+
+5) When the work is done, send them an email DONE
+
+6) Write the outline for the thesis DONE
+
+########################################################################################
+
+5. week:
+
+1) Look for chatgpt (or other llm) api free trial (couldn't get free trial anymore, so I paid for it, now I can use the api) DONE
+
+2) After getting releases using author names, filter them out (DONE) and go through all of these author names to see if there are multiple orcids with the same name, update them with multiple_authors and with these orcids. DONE
+
+3) While getting orcids, only check for the name and not the content of the works.  DONE
+
+4) Add co-author for every author with an order in the middle   DONE
+
+5) Rework outline DONE
+
+6) do something like the qendrim sequence of actions of the program DONE
+
+########################################################################################
+
+6. week:
+
+2) Write a script to extract ORCIDs and store in mongodb.
+
+3) Explain the full flow of the project in an understandble way (diagram, visuals, etc.). DONE
+
+4) If you can get the local ORCID database going, try to use it for everything instead of fatcat.
+
+########################################################################################
+
+8. week:
+
+1) Use dummy data to test the query functionality to some extent. DONE
+
+2) Try to finally get the database locally. (Summaries DONE)
+
+3) Start writing content for your thesis paper. DONE
+
+########################################################################################
+
+9. week:
+
+1) Determine what you actually have to save, instead of the same whole queries and wasting storage. DONE
+
+2) Create a collection with user queries, where we have the resulting put codes and orcids of authors. DONE
+
+3) Get first, co-, last author counts per concept, not in total. DONE
+
+4) Save first, co-, last author names as integers instead of strings to save memory. DONE
+
+5) Try to extract the Activities folder. DONEish.
+
+5) Check if I need to save put_codes at all (probably don't have to).
+
+6) Try to think of ways to make the app very user friendly.
+
+7) Think about extra spaces in the beginning, middle and end while parsing the ChatGpt results. DONE
+
+8) Think about skipping the second step and making the first step better.
+
+9) Maybe (maybe not) use a dictionary for the works instead.
+
+########################################################################################
+
+Discussion: If we only have two contributors, they are still classified as first and last authors depending on their order.
+            How to handle too many or too little authors which result from our query.
+
+10. week:
+
+1) Add a new author role when an author only has himself / herself as a contributor or nobody at all: "only_author". DONE
+
+2) Look into Django tables 2, pagination. DONE
+
+3) Look into intro.js. DONE
+
+4) Finish extracting activity folders (Not done, but made some really good progress).
+
+5) Write a lot for the paper. DONE
+
+6) Fix the regex and querying the title stuff, it doesn't work like it should right now. DONEish.
+
+7) Connect the functionality of querying to the front end (homepage).
+
+8) Change the ORCID field to ORCID id (for some reason this is what it is called).
+
+
+TODO: Put more explanation in captions (they are nonexistent)
+
+TODO: Extraction chapter, common problems as sections
+
+########################################################################################
+
+11. week:
+
+1) Data extraction: Finish extracting activity folders.
+
+2) Querying: Investigate and try to optimize querying the user results.
+
+3) Paper: Write a lot for the paper.
+
+4) Querying: Look at the regex stuff again.
+
+5) Website: Connect the functionality of querying to the front end (homepage).
+
+6) Paper: Put more explanation in captions (for example tell that the data in the figures are examplary and aren't real) DONE
+
+7) Data extraction: Verify the correctness of the extracted data. (So far so good) DONE
+
+8) Paper: Maybe add an extraction chapter somewhere.
+
+9) Website: Prepare some kind of a demo for Florian.
+
+10) Add the whole project to github.
+
+11) Querying: Relevant works count seems to be wrong, try to fix that.
+
+

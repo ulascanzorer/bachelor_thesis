@@ -1,0 +1,23 @@
+\makeatletter
+\ifthenelse{\pdf@strcmp{\languagename}{english}=0}
+{\addcontentsline{toc}{chapter}{Acknowledgements}}
+{\addcontentsline{toc}{chapter}{Danksagungen}}
+\makeatother
+\thispagestyle{empty}
+
+\vspace*{20mm}
+
+\begin{center}
+\makeatletter
+\ifthenelse{\pdf@strcmp{\languagename}{english}=0}
+{\usekomafont{section} Acknowledgements}
+{\usekomafont{section} Danksagungen}
+\makeatother
+\end{center}
+
+\vspace{10mm}
+
+
+%ADD ACKNOWLEDGEMENTS
+
+\cleardoublepage{}

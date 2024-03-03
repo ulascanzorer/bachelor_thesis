@@ -1,0 +1,43 @@
+1) Abstract
+
+2) Introduction:
+    Introduce our goal of finding qualified people using academic releases. Talk about the structure of the rest of the thesis paper.
+
+3) Related Works:
+    Explain software patterns that could be a candidate for the topic of thesis. Model view controller, single page applications, etc. Talk about different ways (patterns) to go about creating a web application.
+
+4) Design and Implementation:
+    4.1) Overview:
+         Sequence diagram of what the tool is doing.
+
+    4.2) Design choices and technologies:
+         (Refer to section 3) Explain why we decided on model view controller compared to other models from the "Related Works" section. Explain that we use Django and talk about the similarities between model view controller and model template view. Also talk about Docker here.
+
+    4.3) Implementation overview:
+         Explain what model, template and view correspond to in our case and give an overview of what they do.
+
+    4.4) Model:
+            Explain the core functionalities of our program in many subsections.
+
+    4.5) Template:
+            Explain how the data is displayed on the website when requested from a user in subsections (possible frontend explanation)
+
+    4.6) View:
+            Talk about the filtering options of the application.
+
+5) Results and Discussion
+        5.1) Example queries:
+             Go through some scenarios (user stories) where users try to use the website with different queries and different filters. Use screenshots of the app and other visual aids.
+
+        5.2) Runtime Analysis (Performance):
+             Analyze which parts of the code take how long using different queries. Also mention the contributions of different parameters on the speed of the overall app (Work with numbers).
+
+        5.3) Discussion and future outlook:
+                Go into detail about significant issues and how we went about solving (or trying to solve) them. Also suggest possible improvements. Don't undersell yourself. Justify your approach.
+
+6) Conclusion:
+    We conclude the thesis by talking about the main problem and evaluating our implementation.
+
+7) References
+
+

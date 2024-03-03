@@ -1,0 +1,86 @@
+1. hafta:
+
+1) Nasil devasa dosyalari rame koyup, dictionarye cevirebiliyorum, swap memory de kullanmiyor gibi gozukuyor?
+
+2) Tum'daki insanlar adlari ve cinsiyetlerini alabilirsem belki bir model train edebilirim cinsiyet ayrimi yapabilmek icin (ya da baska yerlerden data bulabilirim, olimpiyatlar gibi).
+
+########################################################################################
+
+2. hafta:
+
+1) Tez yazim icin nasil not almaliyim, cok kaotik calisiyor gibi hissediyorum.
+
+2) Gender isini nasil hizlandirabilirim? (Her seferinde dosyayi okuyor)
+
+3) Kodu nasil temizleyebilirim, nasil bir yol izleyeyim cok daginik olmaya basladi. En son mu duzelteyim simdiden mi baslayayim?
+
+########################################################################################
+
+5. week:
+
+1) I feel like I have a lot of problems that don't seem to have good solutions. I am afraid that maybe I am not good enough to find these solutions, even though I work really hard for this.
+
+2) I don't know how I will be judged (in terms of the final grade) because of these problems. I feel like there are so many problems that when combined I won't be able to come up with a well functioning project in terms of its goals. I know all the reasons for these problems and ways to "solve" them or why they can't be solved, but I feel like this is not enough, although I feel like it should be.
+
+3) Why do I have to use celery with django, I have read that django by itself can handle multiple requests.
+
+4) Does django also include the server or... I am a little confused with that.
+
+5) ORCID data is too big, but using the API is also too slow...
+
+########################################################################################
+
+6. week:
+
+1) Comparing ORCID names is difficult, because the names in the releases are abbreviated and the formats are different altogether.
+
+2) In the worst case scenario we make 10_000 * 10 = 100_000 chatgpt API calls in order to determine if the releases are relevant to the topic or not, we have to fix this somehow.
+
+3) Which filters shall we use (Right now I have gender and date)?
+gender, date (year), minimum number of publications in total, minimum number of first authorships, minimum number of last authorships)
+
+########################################################################################
+
+7. week:
+
+1) I MUST get the names of the orcids, in order to determine their "author order" in the works. Even that won't work 100% correctly, because the names in the contributors of a work can sometimes be abbreaviated, so I will have to see if individiual name parts match with the contributor name, so if two people with the same surname contribute to a work, it won't be possible to determine their "author orders". In order to get the names first, I must first download the summaries file to the server, since according to my calculations it doesn't fit in my computer.
+
+2) Am I doing multiprocessing wrong?
+
+########################################################################################
+
+8. week:
+
+1) I think we should check for the "validity" of all of the works at the very end. Because even in the first step, I create a subconcepts list which are comprised of individual words, so for example with there would be "deep" and "learning" there, so we would get a lot of unrelated stuff with "learning". If we use them without splitting them we might miss variations of subconcepts in the titles. For example if we save "attention mechanisms" as a subconcept, a title with "attention based mechanisms" in it would be skipped.
+
+2) How many pages for the paper, how many figures, overleaf?
+
+3) Should I add number of works as a field as well, so that we can filter using that as well => yes.
+
+########################################################################################
+
+9. week:
+
+1) Some help with regex (trying to check if a title contains a string, i.e (something | something_else | something_else etc.))?
+
+2) What kind of result page would be nice? (download button, counts as graphs (x axis authors, y axis author roles), button to go to authors' orcid page)
+
+3) Django, wouldn't the context that I give to the template be too big if I use the complete result.
+
+########################################################################################
+
+10. week:
+
+1) How formal should the paper be?
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,29 @@
+Discussion:
+Caching of queries, chatgpt calls for sub-concepts and similarity results.
+
+Changing database over years.
+
+Refresh query history with new data and inform user (automatically / manual).
+
+Chatgpt injection stuff.
+
+User friendliness.
+
+False positives, filtering out wrong people.
+Citation count of works.
+
+Maybe not storing found documents in the memory.
+
+Works have only names as contributors and not orcid Ids, so we have to match them by name, which could in some cases be problematic. (for example, if someone has special characters in their name, but it is not consistent across works and the orcid entry, we will miss things).
+
+Summaries file does not have everyone (for example ORCID iD 0000-0001-5082-1200).
+
+We get lots of results from queries and therefore get an error. In order to overcome this, we query with smaller lists and aggregate the results at the end.
+
+
+
+
+
+
+
+

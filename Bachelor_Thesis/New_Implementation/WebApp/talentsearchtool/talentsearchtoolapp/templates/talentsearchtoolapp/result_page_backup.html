@@ -1,0 +1,30 @@
+{% extends 'django_bootstrap5/bootstrap5.html' %}
+
+{% load django_bootstrap5 %}
+
+{% block bootstrap5_content %}
+    <div class="container">
+        <ul class="list-group">
+            <li class="list-group-item"><a class="list-group-link" href="{% url 'homepage' %}">home</a></li>
+            <li class="list-group-item"><a class="list-group-link" href="{% url 'homepage' %}">formset</a></li>
+            <li class="list-group-item"><a class="list-group-link" href="{% url 'homepage' %}">form</a></li>
+            <li class="list-group-item"><a class="list-group-link" href="{% url 'homepage' %}">form_by_field</a></li>
+            <li class="list-group-item"><a class="list-group-link" href="{% url 'homepage' %}">form_horizontal</a></li>
+            <li class="list-group-item"><a class="list-group-link" href="{% url 'homepage' %}">form_inline</a></li>
+            <li class="list-group-item"><a class="list-group-link" href="{% url 'homepage' %}">form_with_files</a></li>
+            <li class="list-group-item"><a class="list-group-link" href="{% url 'homepage' %}">pagination</a></li>
+            <li class="list-group-item"><a class="list-group-link" href="{% url 'homepage' %}">miscellaneous</a></li>
+        </ul>
+
+        {% autoescape off %}{% bootstrap_messages %}{% endautoescape %}
+    </div>
+
+    {% if found_authors_cursor %}
+        <ul class="list-group">
+            {% for author in found_authors_cursor %}
+                <li class="list-group-item"><a class="list-group-link" href="{% url 'homepage' %}">{{ author.given_names }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock %}

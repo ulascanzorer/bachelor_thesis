@@ -1,0 +1,16 @@
+Different types of names in the database
+
+
+1) First names are abbreviated
+    e.g.: H. -J. Henzler -> can't find the gender, since we don't know the first names
+
+2) Some first names are abbreaviated
+    e.g.: Alastair D. Martin -> find the gender from Alastair 
+
+2) First name(s) and last name
+    e.g.: Meryem Farnane -> can find the gender
+
+3) Last name and first name(s)
+    e.g.: Guohua Hua -> can find the gender with some adjustments
+
+4) Multiple names, ignore this case

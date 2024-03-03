@@ -1,0 +1,3 @@
+The metadata services mentioned here are found in the following wikipedia page: https://en.wikipedia.org/wiki/List_of_academic_databases_and_search_engines#Metadata_services
+
+1) Elicit: Wikipedia says that it is free, but you actually need a subsciption to use it properly (free version gives you 5000 credits for one time only).
