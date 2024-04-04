@@ -1,0 +1,138 @@
+{% extends 'django_bootstrap5/bootstrap5.html' %}
+
+{% load django_bootstrap5 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block bootstrap5_content %}
+
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'talentsearchtoolapp/home_page.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/intro.js/introjs.css">
+    <title>Home page</title>
+  </head>
+  <body>
+    <main>
+      <div class="main-intro">
+        <h1>Welcome To The <br>
+            Talent Search Tool</h1>
+        <p>This tool allows you to find qualified people <br> 
+           in given academic fields! The tool first finds <br>
+           works that are possibly relevant to the given <br>
+           academic fields. Then, it finds their respective <br>
+           authors and thus presents you with a table of <br>
+           authors relevant to an academic field, with <br>
+           useful information, such as the number of relevant <br>
+           works they have produced for an academic field, or <br>
+           ORCID urls which allow you to learn more about them <br>
+           easily! Start by simply typing academic fields in <br>
+           the input field on the right and picking an earliest <br>
+           publication year, which determines which works shall <br>
+           be considered for the search. Have fun!</p>
+      </div>
+
+      <div class="main-query-and-tutorial">
+        <form action="/" method="post" id="myForm">
+          {% csrf_token %}
+
+          <!-- Invisible input, which will be filled if we are in tutorial mode. -->
+
+          <div id="hidden-tutorial-input" style="display: none;">
+            {{ form.tutorial }}
+            {{ form.tutorial.errors }}
+          </div>
+    
+          <div id="query-div">
+            <label for="{{ form.query.id_for_label }}"></label>
+            {{ form.query }}
+            {{ form.query.errors }}
+          </div>
+    
+          <div id="publication_year-div">
+            <label for="{{ form.publication_year.id_for_label }}">Publication year starting from:</label>
+            {{ form.publication_year }}
+            {{ form.publication_year.errors }}
+          </div>
+    
+          <div id="submit-div">
+            <input class="btn btn-primary" id="submit-button" type="submit">
+          </div>
+        </form>
+
+        <div id="tutorial-div">
+          <a class="btn btn-secondary" id="tutorial-button" role="button">Tutorial</a>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://unpkg.com/intro.js/intro.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      sessionStorage.setItem("tutorial", "false");
+
+      const queryElement = document.getElementById("id_query");
+      const publicationYearElement = document.getElementById("id_publication_year");
+      const tutorial = document.getElementById("id_tutorial");
+
+      const introJsInstance = introJs().setOptions({
+        steps: [
+          {
+            intro: "You are now in the tutorial mode. In order to turn this off at any stage, you must refresh the home page. We shall now walk through an example usage scenario."
+          },
+          {
+            element: queryElement,
+            intro: "You can enter your query in this search bar.",
+          },
+          {
+            element: publicationYearElement,
+            intro: "You can then choose the earliest publication year for the works to be considered.",
+          },
+          {
+            element: document.getElementById("submit-button"),
+            intro: "Click on the submit button to continue.",
+          },
+        ],
+      });
+
+      /* introJsInstance.onexit(function() {
+        queryElement.readOnly = false;
+        publicationYearElement.disabled = false;
+      }); */
+
+      const tutorialElement = document.getElementById("tutorial-button");
+      tutorialElement.addEventListener("click", function() {
+        // Set up the elements in such a way that they are filled with tutorial data and cannot be changed in tutorial mode.
+
+        queryElement.value = "deep learning, attention mechanisms"
+        queryElement.readOnly = true;
+
+        publicationYearElement.value = "2020"
+        publicationYearElement.disabled = true;
+
+        introJsInstance.start();
+        // Set the tutorial to true, so that we can check it later in the other pages.
+        sessionStorage.setItem("tutorial", "true");
+      });
+
+      // Set the value of the hidden tutorial input before submitting, so that the home page knows we are in the tutorial.
+
+      const formElement = document.getElementById("myForm");
+      formElement.addEventListener("submit", function() {
+        if (sessionStorage.getItem("tutorial") === "true") {
+          queryElement.readOnly = false;
+          publicationYearElement.disabled = false;
+          tutorial.value = "true";
+        }
+        formElement.submit();
+      });
+
+    </script>
+  </body>
+</html>
+{% endblock %}

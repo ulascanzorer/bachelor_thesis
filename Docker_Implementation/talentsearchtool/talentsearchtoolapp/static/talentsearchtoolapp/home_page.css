@@ -1,0 +1,64 @@
+h1 {
+    font-size: 32px;
+    color: #fff;
+    line-height: 40px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+p, #publication_year-div {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    color: #f7f7f7;
+}
+
+main {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.6)
+      ), url(images/pexels-ivo-rainha-1290141.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .main-intro {
+    position: relative;
+    right: 25vh;
+    /*background: rgba(204, 204, 204, 0.8);*/
+   
+}
+
+main .main-query-and-tutorial {
+    position: relative;
+    left: 25vh;
+    bottom: 15vh;
+    width: 40%;
+}
+
+#id_query {
+    width: 100%;
+}
+
+#publication_year-div {
+    padding-top: 4%;
+    text-align: right;
+}
+
+#submit-div, #tutorial-div {
+    text-align: center;
+}
+
+#submit-div {
+    padding-top: 7%;
+}
+
+#tutorial-div {
+    padding-top: 1%;
+}

@@ -1,0 +1,36 @@
+h1, h2, #concepts-input-div, #query-div, #submit-div, #publication_year-div, #login_signup-div, #tutorial-div {
+    text-align: center;
+    color: aliceblue;
+}
+
+#submit-div {
+    padding-top: 7%;
+}
+
+#id_query {
+    width: 600px;
+}
+
+#query-div {
+    padding-top: 2%;
+}
+
+#publication_year-div {
+    padding-top: 2%;
+}
+
+#login_signup-div {
+    padding-top: 1%;
+}
+
+#tutorial-div {
+    padding-top: 1%;
+}
+
+body {
+    background-color: rgb(75, 72, 72);
+}
+
+.introjs-tooltip-title {
+    color: black;
+}
