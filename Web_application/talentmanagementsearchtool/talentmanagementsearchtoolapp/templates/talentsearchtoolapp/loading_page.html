@@ -1,0 +1,112 @@
+{% load django_bootstrap5 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block bootstrap5_content %}
+<!doctype html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>{% block title %}{{ title }}{% endblock %}</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'talentsearchtoolapp/loading_page.css' %}">
+        <link rel="stylesheet" href="https://unpkg.com/intro.js/introjs.css">
+        <title>Loading</title>
+    </head>
+
+    <body>
+        <main>
+            <div class="waiting-text">
+                <h1>Waiting for the results...</h1>
+                <h2>This might take a long time, you can enter your email address below and we will notify you when we are done!</h2>
+            </div>
+
+            <div class="email-input">
+                <form action="/loading_page" method="post" id="myForm">
+                    {% csrf_token %}
+
+                    <div id="email-input-div">
+                        <label for="{{ form.email.id_for_label }}"></label>
+                        {{ form.email }}
+                        {{ form.email.errors }}
+                        <input class="btn btn-primary" id="submit-button" type="submit">
+                        {% if email_error %}
+                        <h2>{{ email_error }}</h2>
+                        {% endif %}
+                    </div>
+                </form>
+            </div>
+        </main>
+        
+        <script src="https://unpkg.com/intro.js/intro.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            // The part below checks if we are in the tutorial.
+
+            const tutorialStatus = sessionStorage.getItem("tutorial");
+
+            function checkProcessingStatus(taskId) {
+                $.ajax({
+                    url: "check_processing_status",
+                    data: { "task_id": taskId },
+                    success: function(data) {
+                        if (data.status == "complete") {
+                            window.location.href = "result_page?task_id=" + taskId;
+                        } else if (data.status == "in_progress") {
+                            setTimeout(function() {
+                                checkProcessingStatus(taskId);
+                            }, 10000);
+                        } else {
+                            console.error("Error checking processing status: ", data.message);
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error checking processing status: ", error);
+                    }
+                });
+            }
+
+            const submitButton = document.getElementById("submit-button");
+            const emailElement = document.getElementById("id_email");
+            const taskId = "{{ task_id }}";
+
+            const introJsInstance = introJs().setOptions({
+                steps: [
+                    {
+                        intro: "In the loading page you can either wait for the results and be redirected once they are available or enter your email address and get a link leading you to your results when they become available."
+                    },
+                    {
+                        intro: "This is where you can enter your email address.",
+                        element: emailElement,
+                    },
+                    {
+                        intro: "Click on the submit button to continue.",
+                        element: submitButton,
+                    }
+                ],
+            });
+
+            if (tutorialStatus == "true") {
+                const formElement = document.getElementById("myForm");
+                formElement.addEventListener("submit", function(event) {
+                    event.preventDefault();
+
+                    window.location.href = "result_page?task_id=" + taskId;
+                });
+
+                emailElement.value = "johndoe@johndoe.com";
+                emailElement.readOnly = true;
+
+                introJsInstance.start();
+            } else {
+                $(document).ready(function() {
+                    let taskId = "{{ task_id }}";
+                    checkProcessingStatus(taskId);
+                });
+            }
+        </script>
+    </body>
+</html>
+{% endblock %}

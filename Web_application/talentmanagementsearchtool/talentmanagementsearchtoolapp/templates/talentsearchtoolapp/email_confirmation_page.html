@@ -1,0 +1,29 @@
+{% load django_bootstrap5 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block bootstrap5_content %}
+<!doctype html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>{% block title %}{{ title }}{% endblock %}</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'talentsearchtoolapp/email_confirmation_page.css' %}">
+        <link rel="stylesheet" href="https://unpkg.com/intro.js/introjs.css">
+        <title>Email Confirmed</title>
+    </head>
+
+    <body>
+        <main>
+            <div class="confirmation-text">
+                <h1>We will send you an email with a link to your results,<br>once they are prepared.<br><br>Thanks for using the Talent Search Tool!</h1>
+            </div>
+        </main>
+    </body>
+</html>
+
+
+{% endblock %}

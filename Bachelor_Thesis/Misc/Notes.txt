@@ -1,3 +1,0 @@
-1) In the first part when we try to get related concepts from a keyword, we get a list composed of single words which might get too many releases and also releases that are not quite related to our keyword. Here we prefer having false positives instead of getting too little related releases, since we later only keep releases with a name related to the keyword anyway.
-
-2)
