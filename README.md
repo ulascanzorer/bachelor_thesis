@@ -51,7 +51,7 @@ docker build -t talentmanagementsearchtool .
 ```
 docker run -d -p 8000:8000 --name talentmanagementsearchtool -it talentmanagementsearchtool
 ```
-3. In the Docker container, the Python requirements are installed and mongod is running. You can now copy the extraction scripts and the final_orcid_database folder from the root of the repository into the container using a command like "docker cp".
+3. In the Docker container, the Python requirements are installed and mongod is running. You can now copy the extraction scripts and the tutorial_database folder from the root of the repository into the container using a command like "docker cp".
 4. You can now enter your Docker container and follow the steps from the first part starting from the "Populate the MongoDB Database":
 ```
 docker exec -it talentmanagementsearchtool bash
