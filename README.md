@@ -22,7 +22,7 @@ You must first download the individual ORCID Public Data Files from here: [ORCID
 
 Then, you must use the extraction scripts provided in the Extraction_scripts directory. The workflow is as follows:
 1. Get the ORCID summaries folder in the same directory with "orcid_summaries_extractor.py" and execute it in order to retrieve general information about all the ORCID users, which shall be used by "orcid_activities_file_extractor.py".
-2. One by one, get the ORCID activity folders in the same directory with "orcid_activities_file_extractor.py", for each folder change the name in the script accordingly, the scripts are documented so you will find it easily.
+2. One by one, get the ORCID activities folders in the same directory with "orcid_activities_file_extractor.py", for each folder change the name in the script accordingly, the scripts are documented so you will find it easily.
 3. When every folder has been processed, use the functions in the "database_manager.ipynb" in order to remove possible duplicates, and add indices to the database collections.
 4. At the end, use the "adding_genders.ipynb" in order to add the genders to all the authors.
 
