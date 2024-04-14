@@ -93,7 +93,7 @@ def process_first_level_directories(process_id, first_level_directory_paths):
 
 
 def process_orcid_summaries():
-    path = "./ORCID_2023_10_summaries"
+    path = "./ORCID_2023_10_summaries" # Modify this path in order to choose the path of the summaries folder to extract. 
     first_level_directories = os.listdir(path)
     first_level_directory_paths = []
 

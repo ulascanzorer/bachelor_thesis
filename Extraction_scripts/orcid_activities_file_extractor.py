@@ -10,7 +10,7 @@ import ray
 
 ray.init()
 
-activities_path = Path("./ORCID_2023_10_activities_8")
+activities_path = Path("./ORCID_2023_10_activities_8")  # Modify this path in order to choose the activities folder to extract.
 
 @ray.remote
 class Subfolders_Processor:
