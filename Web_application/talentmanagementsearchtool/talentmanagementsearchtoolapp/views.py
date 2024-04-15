@@ -326,7 +326,7 @@ def wait_for_task_and_send_email(email, task_id):
             if status == "complete":
                 del processing_status[task_id]
 
-                email_content = f'The results are in! You can access them using the following link: <a href="http://127.0.0.1:8000/result_page?task_id={task_id}">Results</a>'
+                email_content = f'The results are in! You can access them using the following link: <a href="http://10.152.16.10:8000/result_page?task_id={task_id}">Results</a>'
 
                 send_email(email, email_content)
                 break
@@ -516,6 +516,7 @@ def result_page(request):
     # Get the gender parameters.
 
     selected_genders = request.GET.getlist("gender")
+    print(selected_genders)
 
     # Special case if we are in the tutorial.
 
@@ -557,10 +558,33 @@ def result_page(request):
                                                             float_filters,
                                                             selected_genders)
 
-        cache.set(user_result_id, (filtered_results, original_query), timeout=3600)   # Sets the results in the cache for an hour.
+        cache.set(user_result_id, (filtered_results, original_query, integer_filters, float_filters, selected_genders), timeout=3600)   # Sets the results in the cache for an hour.
 
     else:
-        filtered_results, original_query = cached_data
+        filtered_results, original_query, latest_integer_filters, latest_float_filters, latest_selected_genders = cached_data
+
+        # Check if the filters are still the same, if not filter the results again.
+        print(selected_genders)
+        print(latest_selected_genders)
+
+        if integer_filters != latest_integer_filters or float_filters != latest_float_filters or selected_genders != latest_selected_genders:
+            user_results_cursor = db.user_results.find({ "user_id": user_id, "result_id": user_result_id })
+
+            found_author_results = []
+
+            for user_result in user_results_cursor:
+                found_author_results.extend(user_result["found_results"])
+                original_query = user_result["query"]
+
+
+            filtered_results = author_results_with_filters(found_author_results,
+                                                                # Here comes the filters...
+                                                                integer_filters,
+                                                                float_filters,
+                                                                selected_genders)
+
+            cache.set(user_result_id, (filtered_results, original_query, integer_filters, float_filters, selected_genders), timeout=3600)   # Sets the results in the cache for an hour.
+            
 
     page_size = 20
 
@@ -593,4 +617,3 @@ def check_processing_status(request):
         return JsonResponse({ "status": "error", "message": "No such task." })
 
 ########################################### End of my views.
-
